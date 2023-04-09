@@ -40,18 +40,15 @@ export const getPosts = async () => {
 
 export const getRecentPosts = async () => {
   const query = gql`
-    query GetPostDetails() {
-      posts(
-        orderBy: createdAt_ASC
-        last: 3
-        ) {
-          title
-          featuredImage {
-            url
-          }
-          createdAt
-          slug
+    query GetPostDetails {
+      posts(where: {}, orderBy: createdAt_ASC, last: 3) {
+        title
+        featuredImage {
+          url
         }
+        createdAt
+        slug
+      }
     }
   `;
 
